@@ -1,5 +1,5 @@
 ```
-https://www.nuget.org/packages/QRCoderNetCore/
+https://www.nuget.org/packages/QRCoder
 ```
 
 # Create QR Code In Blazor Using ASP .Net Core
