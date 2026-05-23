@@ -2,6 +2,11 @@
 ```
 https://www.youtube.com/watch?v=Vogg3s54n0A
 ```
+
+```
+https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization
+```
+
 # Folder Setup
 ```
 Models
