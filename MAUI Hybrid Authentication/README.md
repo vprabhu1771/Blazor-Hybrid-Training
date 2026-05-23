@@ -15,6 +15,7 @@ https://www.nuget.org/packages/sqlite-net-pcl
 ```
 Models
 Authentication
+Repositories
 ```
 
 # File Setup
