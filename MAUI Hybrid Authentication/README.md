@@ -92,3 +92,29 @@ namespace MauiApp1.Authentication
     }
 }
 ```
+
+# Routes Component
+```
+Components\Routes.razor
+```
+
+```
+@using Microsoft.AspNetCore.Components.Authorization
+<Router AppAssembly="typeof(MauiProgram).Assembly" NotFoundPage="typeof(Pages.NotFound)">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+            <NotAuthorized>
+                @if (!context.User.Identity.IsAuthenticated)
+                {
+                    <RedirectToLogin />
+                }
+                else
+                {
+                    <p>You do not have the necessary permissions to access this page.</p>
+				}				
+            </NotAuthorized>
+        </AuthorizeRouteView>
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+</Router>
+```
