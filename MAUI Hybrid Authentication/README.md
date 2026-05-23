@@ -24,6 +24,7 @@ Entites
 Models -> UserSession.cs
 Authentication -> AuthenticationService.cs
 Authentication -> CustomAuthenticationStateProvider.cs
+Repositories -> UserAccountRepository.cs
 ```
 
 # User Session
