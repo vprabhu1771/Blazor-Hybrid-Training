@@ -190,6 +190,58 @@ namespace MauiApp1.Authentication
     }
 }
 ```
+# CustomAuthenticationStateProvider
+
+```
+Authentication -> CustomAuthenticationStateProvider.cs
+```
+
+```
+using MauiApp.Models;
+using Microsoft.AspNetCore.Components.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Text;
+
+namespace MauiApp.Authentication
+{
+    public class CustomAuthenticationStateProvider : AuthenticationStateProvider
+    {
+        private readonly AuthenticationService _authenticationService;
+        private readonly ClaimsPrincipal _anonymous = new ClaimsPrincipal(new ClaimsIdentity());
+
+        public CustomAuthenticationStateProvider(AuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+        }
+
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+        {
+            var authenticationState = new AuthenticationState(_anonymous);
+
+            var userSession = await _authenticationService.GetUserSession();
+
+            if (userSession != null)
+            {
+                var claimsPrincipal = GetClaimsPrincipal(userSession);
+                authenticationState = new AuthenticationState(claimsPrincipal);
+            }
+
+            return authenticationState;
+        }
+
+        private ClaimsPrincipal GetClaimsPrincipal(UserSession userSession)
+        {
+            return new ClaimsPrincipal(new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, userSession.UserName ?? string.Empty),
+                new Claim(ClaimTypes.Role, userSession.Role ?? string.Empty)
+            }, "CustomAuth"));
+        }
+    }
+}
+```
 
 # Routes Component
 ```
