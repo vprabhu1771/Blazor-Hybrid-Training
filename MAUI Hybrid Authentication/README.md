@@ -7,6 +7,10 @@ https://www.youtube.com/watch?v=Vogg3s54n0A
 https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization
 ```
 
+```
+https://www.nuget.org/packages/sqlite-net-pcl
+```
+
 # Folder Setup
 ```
 Models
