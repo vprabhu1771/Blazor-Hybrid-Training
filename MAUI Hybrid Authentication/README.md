@@ -21,7 +21,30 @@ Authentication -> CustomAuthenticationStateProvider.cs
 ```
 
 # User Session
+```
+Models -> UserSession.cs
+```
 
+```
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MauiApp1.Models
+{
+    public class UserSession
+    {
+        public string? UserName { get; set; }
+        public string? Role { get; set; }
+
+        public UserSession(string? userName, string? role)
+        {
+            UserName = userName;
+            Role = role;
+        }
+    }
+}
+```
 
 
 # Authentication Service
