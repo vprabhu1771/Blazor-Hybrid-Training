@@ -16,6 +16,7 @@ https://www.nuget.org/packages/sqlite-net-pcl
 Models
 Authentication
 Repositories
+Entites
 ```
 
 # File Setup
