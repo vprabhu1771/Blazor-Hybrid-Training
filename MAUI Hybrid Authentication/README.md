@@ -28,6 +28,96 @@ Repositories -> UserAccountRepository.cs
 Entites -> UserAccount.cs
 ```
 
+# 
+```
+Repositories -> UserAccountRepository.cs
+```
+
+```
+using MauiApp1.Models;
+using SQLite;
+
+namespace MauiApp1.Repositories
+{
+    public class UserAccountRepository
+    {
+        private readonly SQLiteAsyncConnection _database;
+
+        public UserAccountRepository(SQLiteAsyncConnection database)
+        {
+            _database = database;
+
+            // Create table
+            _database.CreateTableAsync<UserAccount>().Wait();
+        }
+
+        // Register User
+        public async Task<int> AddUserAsync(UserAccount user)
+        {
+            return await _database.InsertAsync(user);
+        }
+
+        // Login User
+        public async Task<UserAccount> GetUserAsync(string username, string password)
+        {
+            return await _database.Table<UserAccount>()
+                                  .Where(x => x.UserName == username &&
+                                              x.Password == password)
+                                  .FirstOrDefaultAsync();
+        }
+
+        // Check Existing User
+        public async Task<UserAccount> GetUserByUsernameAsync(string username)
+        {
+            return await _database.Table<UserAccount>()
+                                  .Where(x => x.UserName == username)
+                                  .FirstOrDefaultAsync();
+        }
+
+        // Get All Users
+        public async Task<List<UserAccount>> GetAllUsersAsync()
+        {
+            return await _database.Table<UserAccount>().ToListAsync();
+        }
+
+        // Delete User
+        public async Task<int> DeleteUserAsync(UserAccount user)
+        {
+            return await _database.DeleteAsync(user);
+        }
+
+        // Update User
+        public async Task<int> UpdateUserAsync(UserAccount user)
+        {
+            return await _database.UpdateAsync(user);
+        }
+    }
+}
+```
+
+# 
+```
+Entites -> UserAccount.cs
+```
+```
+using SQLite;
+
+namespace MauiApp1.Models
+{
+    public class UserAccount
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+        public string Role { get; set; }
+    }
+}
+```
+
 # User Session
 ```
 Models -> UserSession.cs
