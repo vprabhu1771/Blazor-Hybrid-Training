@@ -9,3 +9,5 @@ Pages\Home.razor
 
 Welcome to your new app.
 ```
+
+![Image](1.PNG)
