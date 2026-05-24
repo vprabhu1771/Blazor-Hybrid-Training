@@ -20,3 +20,4 @@ Pages\Counter.razor
     }
 }
 ```
+![Image](1.PNG)
