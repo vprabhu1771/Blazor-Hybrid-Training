@@ -171,3 +171,6 @@ string address =
 ```
 
 This works in **.NET MAUI Android**, **iOS**, **Windows**, and **MAUI Blazor Hybrid** applications.
+
+![Image](1.png)
+![Image](2.png)
